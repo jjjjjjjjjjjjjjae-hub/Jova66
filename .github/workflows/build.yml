@@ -19,9 +19,9 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    # GitHub серверіндегі дайын Gradle көмегімен 'gradlew' файлын құрастырып аламыз
+    # Түзету: Gradle нұсқасын 8.9-ға көтереміз (AGP 8.7.3 талабына сай)
     - name: Generate Gradle Wrapper
-      run: gradle wrapper --gradle-version 8.7
+      run: gradle wrapper --gradle-version 8.9
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
