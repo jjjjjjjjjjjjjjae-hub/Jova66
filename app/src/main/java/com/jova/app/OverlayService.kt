@@ -13,6 +13,8 @@ import android.view.Gravity
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 
 class OverlayService : Service() {
@@ -31,34 +33,59 @@ class OverlayService : Service() {
 
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
 
+        // Басты контейнер - Күңгірт қара түсті фон
         overlayView = FrameLayout(this).apply {
-            setBackgroundColor(Color.parseColor("#99000000"))
+            setBackgroundColor(Color.parseColor("#FA121212")) // 98% мөлдір емес қара түс
         }
 
+        // Элементтерді вертикалды орналастыруға арналған LinearLayout
+        val contentLayout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            gravity = Gravity.CENTER
+        }
+
+        // ТҮЗЕТУ: Жүйелік галерея суретін (бейне ретінде) қосу
+        val imageView = ImageView(this).apply {
+            setImageResource(android.R.drawable.ic_menu_gallery) // Жүйелік дайын сурет белгішесі
+            layoutParams = LinearLayout.LayoutParams(250, 250).apply {
+                bottomMargin = 50
+            }
+        }
+        contentLayout.addView(imageView)
+
+        // Мәтін жазу
         val textView = TextView(this).apply {
-            text = "Jova66 Beta\nФондық режим толық іске қосылды!"
+            text = "Jova66 Beta\nФондық режим толық белсенді!"
             setTextColor(Color.WHITE)
             textSize = 22f
             gravity = Gravity.CENTER
+            layoutParams = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            ).apply {
+                bottomMargin = 80
+            }
         }
-        val textParams = FrameLayout.LayoutParams(
+        contentLayout.addView(textView)
+
+        // Жабу батырмасы
+        val closeBtn = Button(this).apply {
+            text = "Жабу (Exit)"
+            setBackgroundColor(Color.parseColor("#FF5252"))
+            setTextColor(Color.WHITE)
+            setOnClickListener { stopSelf() }
+        }
+        contentLayout.addView(closeBtn)
+
+        // Ортаға бағыттау
+        val contentParams = FrameLayout.LayoutParams(
             FrameLayout.LayoutParams.WRAP_CONTENT,
             FrameLayout.LayoutParams.WRAP_CONTENT,
             Gravity.CENTER
         )
-        overlayView.addView(textView, textParams)
+        overlayView.addView(contentLayout, contentParams)
 
-        val closeBtn = Button(this).apply {
-            text = "Жабу (Exit)"
-            setOnClickListener { stopSelf() }
-        }
-        val btnParams = FrameLayout.LayoutParams(
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            FrameLayout.LayoutParams.WRAP_CONTENT,
-            Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
-        ).apply { bottomMargin = 150 }
-        overlayView.addView(closeBtn, btnParams)
-
+        // ТОЛЫҚ ЭКРАН ТҮЗЕТУІ: Оверлей жоғарғы статус бар мен төменгі батырмаларды қоса толық жауып тұрады
         val layoutFlag = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         } else {
@@ -70,7 +97,9 @@ class OverlayService : Service() {
             WindowManager.LayoutParams.MATCH_PARENT,
             WindowManager.LayoutParams.MATCH_PARENT,
             layoutFlag,
-            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+            WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
+            WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN or
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
             PixelFormat.TRANSLUCENT
         )
 

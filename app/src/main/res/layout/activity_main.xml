@@ -1,20 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jova66"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="24dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jova66 Реттеу"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Тұрақты жұмыс істеу үшін рұқсаттарды белсендіріңіз"
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:layout_marginBottom="40dp"/>
+
+        <!-- 1. Экран үстінен көрсету -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1. Басқа терезелердің үстінен көрсету"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/status_overlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Рұқсат берілмеген"
+                android:textColor="#FF5252"
+                android:textSize="13sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- 2. Батарея шектеуі -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2. Батареяны шектеусіз пайдалану"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/status_battery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Рұқсат берілмеген"
+                android:textColor="#FF5252"
+                android:textSize="13sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- 3. Хабарлама жіберу -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#1E1E1E"
+            android:padding="16dp"
+            android:layout_marginBottom="40dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3. Хабарлама жіберу рұқсаты"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/status_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Рұқсат берілмеген"
+                android:textColor="#FF5252"
+                android:textSize="13sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_action"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:text="Рұқсаттарды белсендіру"
+            android:backgroundTint="#00E676"
+            android:textColor="#121212"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_marginTop="auto"
+            android:layout_marginBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>
