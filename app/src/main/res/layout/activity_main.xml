@@ -115,7 +115,7 @@
             android:textColor="#121212"
             android:textStyle="bold"
             android:textSize="16sp"
-            android:layout_marginTop="auto"
+            android:layout_marginTop="32dp"
             android:layout_marginBottom="16dp"/>
 
     </LinearLayout>
