@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- Басты терезе контейнері -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- 1. Статус Бар (Status Bar) -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#33000000"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp">
+            
+            <TextView
+                android:id="@+id/status_bar_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:text="12:00"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@android:drawable/stat_sys_wifi_signal_4_fully"
+                    android:layout_marginEnd="6dp" />
+                    
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@android:drawable/stat_sys_battery_100" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- 2. Негізгі Экран (Жұмыс үстелі немесе ашылған қосымша) -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- А. Виртуалды Жұмыс Үстелі (Desktop View) -->
+            <LinearLayout
+                android:id="@+id/desktop_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="JovaOS v1.0"
+                    android:textColor="#00E676"
+                    android:textSize="26sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="4dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Андроид ішіндегі виртуалды жүйе"
+                    android:textColor="#888888"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="50dp" />
+
+                <!-- Қосымшалар торы (App Grid - Көлденең сызықпен) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <!-- Қосымша 1: Termux -->
+                    <LinearLayout
+                        android:id="@+id/app_termux"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@android:drawable/ic_secure" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Termux"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+
+                    <!-- Қосымша 2: Settings -->
+                    <LinearLayout
+                        android:id="@+id/app_settings"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@android:drawable/ic_menu_preferences" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Settings"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+
+                    <!-- Қосымша 3: Browser -->
+                    <LinearLayout
+                        android:id="@+id/app_browser"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@android:drawable/ic_menu_search" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Browser"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+
+                    <!-- Қосымша 4: Jova Mod -->
+                    <LinearLayout
+                        android:id="@+id/app_jovamod"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@android:drawable/ic_menu_compass" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jova Mod"
+                            android:textColor="#FFFFFF"
+                            android:textSize="11sp"
+                            android:layout_marginTop="6dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Б. Виртуалды Терезе Қосымшалары (App Windows - Әдетте жасырулы) -->
+            <FrameLayout
+                android:id="@+id/app_window"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:background="#121212">
+
+                <!-- 1. Виртуалды Termux терезесі -->
+                <LinearLayout
+                    android:id="@+id/mock_termux_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone">
+                    <ScrollView
+                        android:id="@+id/termux_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:fillViewport="true">
+                        <TextView
+                            android:id="@+id/termux_output"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Welcome to Termux Emulator\nType 'help' to see all commands.\n\n$ "
+                            android:textColor="#00FF00"
+                            android:textSize="14sp"
+                            android:typeface="monospace" />
+                    </ScrollView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+                        <EditText
+                            android:id="@+id/termux_input"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="#1A1A1A"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:typeface="monospace"
+                            android:padding="10dp"
+                            android:inputType="text"
+                            android:imeOptions="actionSend" />
+                        <Button
+                            android:id="@+id/termux_send"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="RUN"
+                            android:backgroundTint="#00FF00"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 2. Виртуалды Баптау терезесі (Settings) -->
+                <ScrollView
+                    android:id="@+id/mock_settings_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="16dp"
+                    android:visibility="gone">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Жүйелік ақпарат"
+                            android:textColor="#FFFFFF"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="20dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• OS: Android 16 (JovaOS Rom)"
+                            android:textColor="#CCCCCC"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="12dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• CPU: Snapdragon 8 Gen 5 (Virtual)"
+                            android:textColor="#CCCCCC"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="12dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• Kernel: Linux 6.1.15-jova-emu"
+                            android:textColor="#CCCCCC"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="12dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• RAM: 16 GB DDR5X"
+                            android:textColor="#CCCCCC"
+                            android:textSize="15sp"
+                            android:layout_marginBottom="12dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="• Root рұқсаттары: БЕЛСЕНДІ"
+                            android:textColor="#00E676"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </ScrollView>
+
+                <!-- 3. Виртуалды Шолушы (Browser) -->
+                <LinearLayout
+                    android:id="@+id/mock_browser_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jova Интернет Браузер"
+                        android:textColor="#FFFFFF"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="8dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Сайт: https://google.com"
+                        android:textColor="#888888"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="24dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Google Search (Іздеу терезесі)\n\n[Браузер сәтті іске қосылды]"
+                        android:textColor="#00E676"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <!-- 4. Виртуалды Jova Mod терезесі -->
+                <LinearLayout
+                    android:id="@+id/mock_jovamod_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jova66 Ойын Мод Менюі"
+                        android:textColor="#00E676"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:layout_marginBottom="20dp" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ажалсыздық (God Mode)"
+                        android:textColor="#FFFFFF"
+                        android:buttonTint="#00E676"
+                        android:layout_marginBottom="12dp" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Шексіз оқ-дәрі (Infinite Ammo)"
+                        android:textColor="#FFFFFF"
+                        android:buttonTint="#00E676"
+                        android:layout_marginBottom="12dp" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Оқ теппеуі (No Recoil)"
+                        android:textColor="#FFFFFF"
+                        android:buttonTint="#00E676"
+                        android:layout_marginBottom="12dp" />
+                    <CheckBox
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Тез жүгіру (Speed Hack 2x)"
+                        android:textColor="#FFFFFF"
+                        android:buttonTint="#00E676" />
+                </LinearLayout>
+
+            </FrameLayout>
+        </FrameLayout>
+
+        <!-- 3. Навигациялық Батырмалар Барлығы (Navigation Bar) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#1A1A1A"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <!-- Артқа батырмасы (Назад) -->
+            <ImageButton
+                android:id="@+id/nav_back"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@android:drawable/ic_media_previous"
+                android:contentDescription="Назад" />
+
+            <!-- Үйге батырмасы (Домой) -->
+            <ImageButton
+                android:id="@+id/nav_home"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@android:drawable/ic_menu_home"
+                android:contentDescription="Домой" />
+
+            <!-- Өшіру / Оверлейден Шығу (Power / Exit) -->
+            <ImageButton
+                android:id="@+id/nav_exit"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?android:attr/selectableItemBackground"
+                android:src="@android:drawable/ic_lock_power_off"
+                android:contentDescription="Выйти" />
+        </LinearLayout>
+
+    </LinearLayout>
+</FrameLayout>
